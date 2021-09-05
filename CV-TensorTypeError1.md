@@ -1,4 +1,4 @@
-# Computer vision : TensorTypeError1 
+# Computer vision : TensorType
 
 TypeError    Traceback (most recent call last)  
 /tmp/ipykernel_140/851497589.py in <module>  
