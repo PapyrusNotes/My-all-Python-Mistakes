@@ -6,3 +6,4 @@ Main category - Error name
 
 ## All abbreviation of main categories
 - CV :  Computer Vision
+- DS :  Data Science
