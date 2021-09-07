@@ -1,5 +1,5 @@
 # My-all-Python-Mistakes
-![PepeWojak](/assets/wojak.jpg)
+![PepeWojak](./wojak.jpg)
 
 To make a record of my mistakes of programming in Python 😂!
 
