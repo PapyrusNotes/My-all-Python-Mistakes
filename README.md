@@ -10,3 +10,4 @@ Main category - Error name
 - CV :  Computer Vision
 - DS :  Data Science
 - ML :  Machine Learning
+- PY :  Python syntax
