@@ -1,7 +1,6 @@
-# My-all-Python-Mistakes
+# Python with data
 ![pepewojak](./pepewojak.jpg)
 
-Record of my mistakes of programming in Python
 
 # Format of each record 
 Main category - Error name
@@ -10,4 +9,4 @@ Main category - Error name
 - CV :  Computer Vision
 - DS :  Data Science
 - ML :  Machine Learning
-- PY :  Python syntax
+- NL :  Natural Language
