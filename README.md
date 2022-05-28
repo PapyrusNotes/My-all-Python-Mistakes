@@ -1,7 +1,7 @@
 # My-all-Python-Mistakes
 ![pepewojak](./pepewojak.jpg)
 
-To make a record of my mistakes of programming in Python 😂!
+Record of my mistakes of programming in Python
 
 # Format of each record 
 Main category - Error name
