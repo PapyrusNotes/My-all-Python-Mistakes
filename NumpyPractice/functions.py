@@ -40,4 +40,23 @@ if __name__ == '__main__':
     print(f'zero array : {zero_a}')
     print(f'one array : {one_a}')
 
+    zero_like = np.zeros_like(one_a)
+    one_like = np.ones_like(zero_a)
+    print(f'one to zero array : {zero_like}')
+    print(f'zero to one array : {one_like}')
+
+    # fill 9s in the array
+    # random array
+    full_a = np.full((4, 3), 9)
+    random_a = np.random.random((3, 4))
+    print(f'full constant array : {full_a}')
+    print(f'random array : {random_a}')
+
+    # unit matrix
+    unit_matrix = np.identity(4)
+    print(f'unit matrix : {unit_matrix}')
+
+    # diagonal matrix where element is 1
+    diagonal_matrix = np.eye(4)
+    print(f'diagonal matrix : {diagonal_matrix}')
 
