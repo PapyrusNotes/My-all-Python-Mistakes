@@ -1,5 +1,9 @@
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+
+from sklearn.linear_model import LinearRegression
 
 data = pd.read_csv("./datasets/housing_data.csv", header=None, sep=',')  # if no columns , header = None
 column_names = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT',
@@ -27,7 +31,7 @@ data1['CRIM'] = data1['CRIM'].fillna(med_val)
 # print(data.describe())
 
 # 결측치 처리 - 결측치가 존재하는 모든 행 제거
-# data.dropna() # inplace option 사용할시 변경된 데이터프레임 만들지 않고 대체.
+data.dropna(inplace=True)  # inplace option 사용할시 변경된 데이터프레임 만들지 않고 대체.
 
 # 이상치 처리 - 판단 기준 IQR ( Interquartile range ) = q3 - q1
 '''
@@ -46,7 +50,34 @@ def get_iqr_outlier_prop(x):
 
     return
 '''
-print(data['CRIM'].skew())
+# print(data['CRIM'].skew())
 
 data['CRIM'] = np.log1p(data['CRIM'])
-print(data['CRIM'].skew())
+# print(data['CRIM'].skew())
+
+# df_r에 종속변수를 제외한 독립변수들만 남겨놓는다.
+df_r = data.drop(['isHighValue'], axis=1)
+
+# 변수간 상관관계 분석
+cols = ['MEDV', 'LSTAT', 'RM', 'CHAS', 'RAD', 'TAX']
+# print(df_r[cols].corr())
+
+# 데이터 분할
+X_cols = ['LSTAT', 'PTRATIO', 'TAX', 'AGE', 'NOX', 'INDUS', 'CRIM']
+
+X = df_r[X_cols].values
+y = df_r['MEDV'].values
+
+X_train_r, X_test_r, y_train_r, y_test_r = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# 데이터 스케일링
+scaler = MinMaxScaler()
+
+X_train_r_scaled = scaler.fit_transform(X_train_r)
+X_test_r_scaled = scaler.fit_transform(X_test_r)
+
+# 선형회귀 모델
+model_lr = LinearRegression()
+model_lr.fit(X_train_r_scaled, y_train_r)
+print(model_lr.coef_)
+print(model_lr.intercept_)
