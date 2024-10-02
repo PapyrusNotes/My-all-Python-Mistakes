@@ -4,8 +4,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
 from sklearn.linear_model import LinearRegression
+from sklearn.svm import SVR
+from sklearn.ensemble import RandomForestRegressor
 
-data = pd.read_csv("./datasets/housing_data.csv", header=None, sep=',')  # if no columns , header = None
+from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
+
+data = pd.read_csv("datasets/housing_data.csv", header=None, sep=',')  # if no columns , header = None
 column_names = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT',
                 'MEDV', 'isHighValue']
 
@@ -22,7 +26,6 @@ data.columns = column_names
 data1 = data.copy()  # Pandas의 Dataframe.copy는 기본 deepcopy이다.
 med_val = data['CRIM'].median()
 data1['CRIM'] = data1['CRIM'].fillna(med_val)
-
 
 # print(data1.describe())
 
@@ -81,3 +84,29 @@ model_lr = LinearRegression()
 model_lr.fit(X_train_r_scaled, y_train_r)
 print(model_lr.coef_)
 print(model_lr.intercept_)
+
+# SVM
+model_svr = SVR()
+model_svr.fit(X_train_r_scaled, y_train_r)
+
+# RandomForest
+model_rfr = RandomForestRegressor(random_state=123)
+model_rfr.fit(X_train_r_scaled, y_train_r)
+for x, val in zip(X_cols, model_rfr.feature_importances_):
+    print(f'{x} : %.3f' % val)
+
+# 모형별 평가
+y_pred_lr = model_lr.predict(X_test_r_scaled)
+y_pred_svr = model_svr.predict(X_test_r_scaled)
+y_pred_rfr = model_rfr.predict(X_test_r_scaled)
+
+print('-'*30)
+print("선형 회귀 결과")
+print('MAE : %.3f' %mean_absolute_error())
+print('MSE : %.3f' %mean_squared_error())
+print('MAPE : %.3f' %mean_absolute_percentage_error())
+print('-'*30)
+print('-'*30)
+ a= [1,2,4,5,6]
+ for x in a:
+     printa)
