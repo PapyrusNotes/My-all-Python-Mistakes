@@ -92,4 +92,4 @@ print('id of df :', id(df))
 print('id of df2 :', id(df2))
 
 
-print(df == df2)?
+
