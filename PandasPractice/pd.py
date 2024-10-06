@@ -65,7 +65,7 @@ print(idx)          # RangeIndex(start=0, stop=1, step=1)
 print(type(idx))    # pandas.core.indexes.range.RangeIndex
 '''
 
-'''
+
 # two-dimensional python list to Dataframe
 df = pd.DataFrame([[22,'남','덕영중'], [17,'여','수리중']], index=['학생1','학생2'], columns=['age','성별','학교'])
 print(df)
@@ -81,4 +81,15 @@ print(df.index)
 print(type(df.index))    # pandas.core.indexes.base.Index
 print(df.columns)
 print(type(df.columns))  # pandas.core.indexes.base.Index
-'''
+
+df.rename(columns={'나이': 'age', 'gender': 'gender', '소속': 'school'}, inplace=True)
+df2 = df.rename(columns={'나이': 'age', 'gender': 'gender', '소속': 'school'})
+# 기본적으로 rename 메서드는 새로운 df 객체를 반환한다. inplace=True 옵션으로 원본 객체 내에서 값을 대체할 수 있다.
+print(df)
+print(df2)
+print(type(df))
+print('id of df :', id(df))
+print('id of df2 :', id(df2))
+
+
+print(df == df2)?
