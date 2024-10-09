@@ -69,11 +69,14 @@ print('\n')
 print(df.loc['학생3':'학생5', '성별':'학교'])  # column의 순서를 지켜야지 정상적으로 출력됨, 지키지 않으면 Empty column
 '''
 
+
 # setting index
+'''
 exam_data = {'이름': ['aa','bb','cc','dd'],
              '수학': [90, 80, 70, 90],
              '영어': [90,80,70,70] }
 df = pd.DataFrame(exam_data)
+
 print(df)
 df.set_index('이름',inplace=True)
 print(df)
@@ -94,3 +97,51 @@ print(df)
 
 df.loc[6] = 80
 print(df)
+'''
+'''
+# Transpose
+df = df.transpose()
+print(df)
+print('\n')
+
+df = df.T
+print(df)
+'''
+
+'''
+# 특정 열을 행 인덱스로 지정 (inplace 옵션 존재)
+ndf = df.set_index(['이름'])
+print(ndf)
+
+endf = df.set_index(['수학','영어'])  # multi-index
+print(endf)
+'''
+
+'''
+# 행 인데스 재배열
+new_index=[0, 1, 2, 3, 4, 5]  # 기존에 존재하지 않았던 행의 열 값에는 NaN이 삽입됨
+ndf = df.reindex(new_index)
+print(ndf)
+
+ndf = df.reindex(new_index, fill_value=0)  # NaN 대신 채울 값
+print(ndf)
+'''
+
+# 행 인덱스 초기화
+dict_data = [{'song_name': 'STAY', 'artist': 'Bustin Jieber', 'release_date': 20220808},
+{'song_name': 'BEACHES', 'artist': 'Bustin Jieber', 'release_date': 20230421},
+{'song_name': 'Rise', 'artist': 'The Glitch mob', 'release_date': 20170101}
+             ]
+df = pd.DataFrame(dict_data, index=['r0', 'r1', 'r2'])
+print(df)
+
+ndf = df.reset_index()  # 초기화시 기존 index는 열로 이동한다.
+print(ndf)
+
+# 행 인덱스 기준 정렬
+ndf = df.sort_index(ascending=False) # ascending 옵션을 사용하여 오름차순, 내림차순 설정
+print(ndf)
+
+# 특정 열 값 기준 정렬
+ndf = df.sort_values(by='release_date', ascending=False)
+print(ndf)  # 정렬 속도? quick sort
