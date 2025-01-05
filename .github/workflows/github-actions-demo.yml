@@ -26,6 +26,6 @@ jobs:
       - name: List files in the repository
         run: |
           TARGET_FOLDER = "${{ github.workspace }}/DescriptiveStatistics"
-          echo "Listing all files in ${{ TARGET_FOLDER }} of the workspace directory "
+          echo "Listing all files in $TARGET_FOLDER of the workspace directory "
           find $TARGET_FOLDER -mindepth 2 -type f -name "*.py"
       - run: echo "🍏 This job's status is ${{ job.status }}."
