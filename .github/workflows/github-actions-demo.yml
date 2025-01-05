@@ -23,8 +23,20 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-      - name: List files in the repository
+      - name: List files in DescriptiveStatistics
         run: |
           TARGET_FOLDER="${{ github.workspace }}/DescriptiveStatistics"
+          find $TARGET_FOLDER -type f -name "*.py"
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: List files in NumpyPractice
+        run: |
+          TARGET_FOLDER="${{ github.workspace }}/NumpyPractice"
+          find $TARGET_FOLDER -type f -name "*.py"
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: List files in PandasPractice
+        run: |
+          TARGET_FOLDER="${{ github.workspace }}/PandasPractice"
           find $TARGET_FOLDER -type f -name "*.py"
       - run: echo "🍏 This job's status is ${{ job.status }}."
