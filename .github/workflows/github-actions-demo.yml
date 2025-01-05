@@ -26,5 +26,6 @@ jobs:
       - run: echo "This job tests exercise problem in DescriptiveStatistics directory "
       - name: List files in the repository
         run: |
-          ls ${{ github.workspace }/DescriptiveStatistics}
+          echo "Listing all files in DescriptiveStatistics of the workspace directory "
+          find ${{ github.workspace }} -mindepth 2 -type f
       - run: echo "🍏 This job's status is ${{ job.status }}."
