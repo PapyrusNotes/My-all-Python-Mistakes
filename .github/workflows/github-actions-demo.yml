@@ -20,3 +20,11 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  Test-Descriptive-Statistics:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This job tests exercise problem in DescriptiveStatistics directory "
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }/DescriptiveStatistics}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
